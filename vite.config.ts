@@ -37,24 +37,24 @@ export default defineConfig(({ mode }) => {
             name: 'Bhagavad Gita - As It Is',
             short_name: 'Bhagavad Gita',
             description: 'Read and explore the Bhagavad Gita in Nepali and English',
-            theme_color: '#ffffff',
-            background_color: '#ffffff',
+            theme_color: '#2563eb',
+            background_color: '#E8E4C9',
             display: 'standalone',
             scope: '/',
             start_url: '/',
             icons: [
               {
-                src: 'pwa-192x192.png',
+                src: '/bhagavad-gita-pwa/assets/icons/icon_192.png',
                 sizes: '192x192',
                 type: 'image/png',
               },
               {
-                src: 'pwa-512x512.png',
+                src: '/bhagavad-gita-pwa/assets/icons/icon_512.png',
                 sizes: '512x512',
                 type: 'image/png',
               },
               {
-                src: 'pwa-512x512.png',
+                src: '/bhagavad-gita-pwa/assets/icons/icon_512.png',
                 sizes: '512x512',
                 type: 'image/png',
                 purpose: 'any maskable',
@@ -62,6 +62,7 @@ export default defineConfig(({ mode }) => {
             ],
           },
           workbox: {
+            globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
             runtimeCaching: [
               {
                 urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
@@ -74,7 +75,32 @@ export default defineConfig(({ mode }) => {
                   },
                 },
               },
+              {
+                urlPattern: /^https:\/\/cdn\.tailwindcss\.com\/.*/i,
+                handler: 'CacheFirst',
+                options: {
+                  cacheName: 'tailwind-cache',
+                  expiration: {
+                    maxEntries: 5,
+                    maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+                  },
+                },
+              },
+              {
+                urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/,
+                handler: 'CacheFirst',
+                options: {
+                  cacheName: 'image-cache',
+                  expiration: {
+                    maxEntries: 50,
+                    maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+                  },
+                },
+              },
             ],
+          },
+          devOptions: {
+            enabled: true,
           },
         }),
       ],
