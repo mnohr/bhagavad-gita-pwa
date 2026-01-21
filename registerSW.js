@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/bhagavad-gita-pwa/sw.js', { scope: '/bhagavad-gita-pwa/' })})}
