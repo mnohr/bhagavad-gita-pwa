@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2563eb">
   <meta name="description" content="Read and explore the Bhagavad Gita in Nepali and English">
-  <link rel="manifest" href="/bhagavad-gita-pwa/manifest.json">
-  <link rel="apple-touch-icon" href="/bhagavad-gita-pwa/assets/icons/192x192.png">
+  <base href="/bhagavad-gita-pwa/">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/192x192.png">
   <title>Bhagavad Gita As It Is</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -29,7 +30,7 @@
     }
   </style>
 
-<link rel="stylesheet" href="/index.css">
+<link rel="stylesheet" href="index.css">
 <script>
   // Register service worker for PWA
   if ('serviceWorker' in navigator) {
